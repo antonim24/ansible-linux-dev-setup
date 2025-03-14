@@ -1,0 +1,8 @@
+# Role for installing packages that are common between hosts.
+# These packages are things like vim and tmux that I would like to always have available to me.
+---
+- name: Install Packages Ubuntu Hosts
+  ansible.builtin.include_tasks:
+    ubuntu.yml
+  when: ansible_facts['os_family']|lower == 'debian'
+  tags: install, ubuntu
