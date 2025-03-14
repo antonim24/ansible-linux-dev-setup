@@ -1,0 +1,7 @@
+---
+# Role to patch a host based on configuration
+- name: Patch Ubuntu hosts
+  ansible.builtin.import_tasks:
+    patch-ubuntu.yml
+  when: ansible_facts['os_family']|lower == 'debian'
+  tags: patch, ubuntu

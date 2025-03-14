@@ -1,0 +1,18 @@
+---
+- name: Update the cache and perform a full upgrade
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: yes
+
+- name: Remove unneeded packages and old dependencies
+  ansible.builtin.apt:
+    autoremove: true
+    autoclean: true
+
+# Doing this regardless of wether or not a reboot is required to just help clean up a bit.
+- name: Reboot the server
+  ansible.builtin.reboot:
+
+- name: Temporary check the status of my services running in docker
+  ansible.builtin.command:
+    cmd: docker -ps

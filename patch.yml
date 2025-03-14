@@ -1,0 +1,8 @@
+# Ansible playbook to patch hosts
+---
+- name: Patch software on hosts
+  hosts: all
+  become: true
+  become_method: ansible.builtin.sudo
+  roles:
+    - patching
