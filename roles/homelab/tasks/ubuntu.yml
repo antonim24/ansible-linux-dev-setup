@@ -1,0 +1,8 @@
+---
+- name: Install Packages for Homelab
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - python3
+    - docker
