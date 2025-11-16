@@ -1,0 +1,9 @@
+---
+- name: Configure new development workstation
+  hosts: localhost
+  connection: local
+  become: true
+  become_method: ansible.builtin.sudo
+  roles:
+    - common_install
+    - dev_workstation

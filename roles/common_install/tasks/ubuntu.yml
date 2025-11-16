@@ -1,17 +1,12 @@
 # Install packages for Ubuntu
 ---
 - name: Update the package manager's cache
-  apt:
+  ansible.builtin.apt:
     update_cache: true
-
-- name: Install build dependencies
-  apt:
-    name: "*"
-    state: build-dep
+  tags: always
 
 - name: Install Packages
-  apt:
-    pkg:
-    - vim
-    - tmux
-    - make
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+    state: present
+  tags: always
