@@ -7,3 +7,5 @@
   roles:
     - common_install
     - dev_workstation
+    - role: dev_env_cpp
+      tags: never, cpp
