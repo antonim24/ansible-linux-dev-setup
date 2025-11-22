@@ -1,0 +1,8 @@
+---
+- name: Update Jellyfin
+  community.docker.docker_compose_v2:
+    project_src: /opt/jellyfin
+    state: present
+    pull: always
+  tags: always
+  notify: Restart Jellyfin Container

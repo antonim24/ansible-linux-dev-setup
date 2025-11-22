@@ -14,3 +14,8 @@
     line: 'UUID=9efd4410-815d-4b96-a418-3a3b71688944 /mnt/homelab1 ext4 defaults 0 0'
     create: true
   when: inventory_hostname == 'homeserver'
+
+- name: Install Jellyfin
+  ansible.builtin.include_role:
+    name: hl_jellyfin
+  tags: jellyfin
