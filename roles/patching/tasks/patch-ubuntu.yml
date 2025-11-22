@@ -9,10 +9,21 @@
     autoremove: true
     autoclean: true
 
-# Doing this regardless of wether or not a reboot is required to just help clean up a bit.
+- name: Check if reboot required
+  ansible.builtin.stat:
+    path: /var/run/reboot-required
+  register: reboot_required_result
+
+- name: Debug Reboot Required
+  ansible.builtin.debug:
+    var: reboot_required_result.stat.exists
+
 - name: Reboot the server
   ansible.builtin.reboot:
+    msg: "System reboot for updates."
+  become: true
+  when: reboot_required_result.stat.exists
 
 - name: Temporary check the status of my services running in docker
   ansible.builtin.command:
-    cmd: docker -ps
+    cmd: sudo docker ps
