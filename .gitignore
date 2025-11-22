@@ -1,5 +1,9 @@
 # ----- Ansible Generated ----- #
 .ansible
 
+# ----- Environment ----- #
+.venv/
+*.env
+
 # ----- Editor Files ----- #
 .vscode
